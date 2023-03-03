@@ -22,21 +22,21 @@ x = data.isnull()
 # 1     False   True  False
 # 2     False   True  False
 # 3      True   True  False
-x = x.sum()
+# x = x.sum()
 # NumRooms    2
 # Alley       3
 # Price       0
 # dtype: int64
-x = x.idxmax()
+# x = x.idxmax()
 #Alley
 
-data = data.drop([x],axis = 1)
-print(data)
-# nan_number = data.isnull().sum(axis = 0)
-# nan_max_id = nan_number.idxmax()
-# print(nan_max_id)
-# data = data.drop([nan_max_id],axis = 1)
+# data = data.drop([x],axis = 1)
 # print(data)
+nan_number = data.isnull().sum(axis = 0)
+nan_max_id = nan_number.idxmax()
+print(nan_max_id)
+data = data.drop([nan_max_id],axis = 1)
+print(data)
 
-# ts = torch.tensor(data.values)
-# print(ts)
+ts = torch.tensor(data.values)
+print(ts)
