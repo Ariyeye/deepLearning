@@ -16,11 +16,27 @@ print(data)
 
 inputs,outputs = data.iloc[:,0:2],data.iloc[:,2]
 
-nan_number = data.isnull().sum(axis = 0)
-nan_max_id = nan_number.idxmax()
-print(nan_max_id)
-data = data.drop([nan_max_id],axis = 1)
-print(data)
+x = data.isnull()
+#  NumRooms  Alley  Price
+# 0      True  False  False
+# 1     False   True  False
+# 2     False   True  False
+# 3      True   True  False
+x = x.sum()
+# NumRooms    2
+# Alley       3
+# Price       0
+# dtype: int64
+x = x.idxmax()
+#Alley
 
-ts = torch.tensor(data.values)
-print(ts)
+data = data.drop([x],axis = 1)
+print(data)
+# nan_number = data.isnull().sum(axis = 0)
+# nan_max_id = nan_number.idxmax()
+# print(nan_max_id)
+# data = data.drop([nan_max_id],axis = 1)
+# print(data)
+
+# ts = torch.tensor(data.values)
+# print(ts)
